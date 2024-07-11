@@ -16,6 +16,10 @@ example:
     title: "测试自选礼盒"
     # 是否覆盖 view 中 slots, 删除此行则使用 view 文件的 slots
     slots: 10
+  # 使用条件, 支持 PlaceholderAPI 变量与 JavaScript 语句
+  conditions:
+    - "%player_is_op%"
+    - "%nyeconomy_金币% >= 100"
   # 玩家一次可以选择几个奖励
   reward-count: 1
   # 页面按钮

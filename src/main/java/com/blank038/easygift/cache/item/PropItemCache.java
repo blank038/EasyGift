@@ -21,6 +21,7 @@ public class PropItemCache {
     private final String propId, viewId;
     private final ViewParams viewParams;
     private final int rewardCount;
+    private final List<String> conditions = new ArrayList<>();
     private final Map<String, PropButton> propButtonMap = new HashMap<>();
     private final ItemStack propItem;
 
@@ -40,6 +41,8 @@ public class PropItemCache {
         lore.replaceAll((s) -> ChatColor.translateAlternateColorCodes('&', s));
         itemMeta.setLore(lore);
         this.propItem.setItemMeta(itemMeta);
+        // 读取条件
+        this.conditions.addAll(section.getStringList("conditions"));
         // 读取按钮
         if (section.contains("buttons")) {
             ConfigurationSection buttonSec = section.getConfigurationSection("buttons");

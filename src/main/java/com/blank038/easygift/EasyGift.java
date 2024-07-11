@@ -4,6 +4,7 @@ import com.aystudio.core.bukkit.plugin.AyPlugin;
 import com.blank038.easygift.command.EasyGiftCommand;
 import com.blank038.easygift.handler.CacheHandler;
 import com.blank038.easygift.listen.EasyGiftListener;
+import com.blank038.easygift.utils.ScriptUtil;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -26,6 +27,8 @@ public class EasyGift extends AyPlugin {
     public void loadConfig() {
         this.saveDefaultConfig();
         this.reloadConfig();
+        // 初始化脚本引擎
+        ScriptUtil.initScriptEngine();
         // 清理缓存数据
         CacheHandler.clearAllCache();
         // 读取数据

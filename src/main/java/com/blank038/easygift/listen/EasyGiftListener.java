@@ -4,6 +4,7 @@ import com.blank038.easygift.EasyGift;
 import com.blank038.easygift.cache.item.PropItemCache;
 import com.blank038.easygift.cache.view.ViewCache;
 import com.blank038.easygift.handler.CacheHandler;
+import com.blank038.easygift.utils.ScriptUtil;
 import com.blank038.easygift.view.GiftView;
 import de.tr7zw.nbtapi.NBTItem;
 import org.bukkit.Bukkit;
@@ -49,6 +50,10 @@ public class EasyGiftListener implements Listener {
         }
         event.setCancelled(true);
         PropItemCache propItem = CacheHandler.PROP_ITEM_CACHE_MAP.get(propId);
+        if (!ScriptUtil.detectionCondition(player, propItem.getConditions())) {
+            player.sendMessage(EasyGift.getString("message.not-met-condition", true));
+            return;
+        }
         ViewCache viewCache = CacheHandler.VIEW_CACHE_MAP.get(propItem.getViewId());
         new GiftView(propItem, viewCache, propItem.getViewParams())
                 .setConsume(true)

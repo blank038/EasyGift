@@ -1,3 +1,4 @@
+script-engine: "javascript"
 message:
   prefix: "&b道具自选&f "
   help:
@@ -18,4 +19,5 @@ message:
   pls-held-item: "手上的物品不是一个有效的礼盒."
   gotten: "成功领取奖励."
   give: "成功给予玩家 &b%player% &f道具."
+  not-met-condition: "你无法使用这个礼盒."
   reload: "插件配置重载完成."

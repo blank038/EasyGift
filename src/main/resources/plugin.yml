@@ -2,6 +2,8 @@ name: EasyGift
 main: com.blank038.easygift.EasyGift
 depend:
   - AyCore
+  - PlaceholderAPI
+  - NBTAPI
 version: ${version}
 api-version: 1.13
 commands:
