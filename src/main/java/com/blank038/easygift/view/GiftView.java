@@ -132,7 +132,8 @@ public class GiftView {
                 }
                 button.getCommands().forEach((command) -> {
                     if (command.startsWith("console:")) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.substring(8));
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.substring(8)
+                                .replace("%player%", clicker.getName()));
                     } else {
                         opCommands.add(command);
                     }
