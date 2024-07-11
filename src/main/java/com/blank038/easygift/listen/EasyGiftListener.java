@@ -32,10 +32,6 @@ public class EasyGiftListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if (System.currentTimeMillis() <= this.cooldown.getOrDefault(player.getName(), 0L)) {
-            return;
-        }
-        this.cooldown.put(player.getName(), System.currentTimeMillis() + 300L);
         ItemStack itemStack = event.getPlayer().getInventory().getItemInMainHand();
         if (itemStack == null || itemStack.getType() == Material.AIR) {
             return;
@@ -50,6 +46,10 @@ public class EasyGiftListener implements Listener {
         }
         event.setCancelled(true);
         PropItemCache propItem = CacheHandler.PROP_ITEM_CACHE_MAP.get(propId);
+        if (System.currentTimeMillis() <= this.cooldown.getOrDefault(player.getName(), 0L)) {
+            return;
+        }
+        this.cooldown.put(player.getName(), System.currentTimeMillis() + 300L);
         if (!ScriptUtil.detectionCondition(player, propItem.getConditions())) {
             player.sendMessage(EasyGift.getString("message.not-met-condition", true));
             return;
