@@ -1,0 +1,11 @@
+name: EasyGift
+main: com.blank038.easygift.EasyGift
+depend:
+  - AyCore
+version: ${version}
+api-version: 1.13
+commands:
+  easygift:
+    aliases:
+      - egift
+    description: Command for EasyGift.

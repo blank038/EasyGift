@@ -1,0 +1,20 @@
+title: "&8%title%"
+size: 45
+slots: 10,12,14,16
+items:
+  confirm:
+    type: STAINED_GLASS_PANE
+    amount: 1
+    data: 5
+    action: confirm
+    name: "&a确认"
+    slot: 29
+    lore: [ ]
+  deny:
+    type: STAINED_GLASS_PANE
+    amount: 1
+    data: 14
+    action: cancel
+    name: "&c取消"
+    slot: 33
+    lore: [ ]

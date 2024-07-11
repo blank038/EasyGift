@@ -1,0 +1,29 @@
+example:
+  # 道具展示
+  item:
+    type: CHEST
+    amount: 1
+    name: "&b测试自选礼盒"
+    lore:
+      - ""
+      - " &f嘎嘎嘎嘎嘎 "
+      - ""
+  # 目标展示页面
+  view-id: "exampleView"
+  # 展示页面参数
+  view-params:
+    # 标题参数, 替换 view 文件 title 内的 %title% 变量
+    title: "测试自选礼盒"
+    # 是否覆盖 view 中 slots, 删除此行则使用 view 文件的 slots
+    slots: 10
+  # 玩家一次可以选择几个奖励
+  reward-count: 1
+  # 页面按钮
+  buttons:
+    bt1:
+      # 展示物品
+      display: exampleDisplayItem
+      # 额外执行命令
+      commands: [ ]
+      # 是否可获得展示物品
+      gotten: true

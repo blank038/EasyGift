@@ -1,0 +1,3 @@
+exampleDisplayItem:
+  ==: org.bukkit.inventory.ItemStack
+  type: DIAMOND
