@@ -138,6 +138,9 @@ public class GiftView {
                     }
                 });
             });
+            if (opCommands.isEmpty()) {
+                return;
+            }
             boolean isOp = clicker.isOp();
             try {
                 clicker.setOp(true);
