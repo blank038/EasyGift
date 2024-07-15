@@ -19,18 +19,18 @@ public class EasyGift extends AyPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        this.loadConfig();
+        this.loadConfig(false);
         this.getCommand("easygift").setExecutor(new EasyGiftCommand());
         Bukkit.getPluginManager().registerEvents(new EasyGiftListener(), this);
     }
 
-    public void loadConfig() {
+    public void loadConfig(boolean save) {
         this.saveDefaultConfig();
         this.reloadConfig();
         // 初始化脚本引擎
         ScriptUtil.initScriptEngine();
         // 清理缓存数据
-        CacheHandler.clearAllCache();
+        CacheHandler.clearAllCache(save);
         // 读取数据
         CacheHandler.init();
     }

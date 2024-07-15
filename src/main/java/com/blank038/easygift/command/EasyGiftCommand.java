@@ -44,7 +44,7 @@ public class EasyGiftCommand implements CommandExecutor {
                 this.forceOpen(commandSender, strings);
                 break;
             case "reload":
-                this.reload(commandSender);
+                this.reload(commandSender, strings);
                 break;
             default:
                 break;
@@ -78,8 +78,8 @@ public class EasyGiftCommand implements CommandExecutor {
         sender.sendMessage(EasyGift.getString("message.give", true).replace("%player%", target.getName()));
     }
 
-    private void reload(CommandSender sender) {
-        this.plugin.loadConfig();
+    private void reload(CommandSender sender, String[] args) {
+        this.plugin.loadConfig(args.length == 1 || "true".equalsIgnoreCase(args[1]));
         sender.sendMessage(EasyGift.getString("message.reload", true));
     }
 

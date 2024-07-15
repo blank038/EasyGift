@@ -21,10 +21,10 @@ public class CacheHandler {
     public static final Map<String, ViewCache> VIEW_CACHE_MAP = new HashMap<>();
     public static final Map<String, ItemStack> DISPLAY_ITEM_MAP = new HashMap<>();
 
-    public static void clearAllCache() {
+    public static void clearAllCache(boolean save) {
         PROP_ITEM_CACHE_MAP.clear();
         VIEW_CACHE_MAP.clear();
-        if (!DISPLAY_ITEM_MAP.isEmpty()) {
+        if (save && !DISPLAY_ITEM_MAP.isEmpty()) {
             saveDisplayItems();
         }
         DISPLAY_ITEM_MAP.clear();
