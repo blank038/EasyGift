@@ -26,14 +26,14 @@ public class ScriptUtil {
                 ScriptEngineFactory factory = (ScriptEngineFactory) Class.forName("org.openjdk.nashorn.api.scripting.NashornScriptEngineFactory").newInstance();
                 scriptEngineManager.registerEngineName("nashorn", factory);
             } catch (Exception e) {
-                RegisteredServiceProvider<ScriptEngineManager> provider = Bukkit.getServer().getServicesManager().getRegistration(ScriptEngineManager.class);
-                if (provider != null && provider.getProvider() != null) {
-                    scriptEngine = provider.getProvider().getEngineByName("nashorn");
-                }
+                EasyGift.getInstance().getLogger().warning("Failed to register nashorn script engine.");
             }
         }
-        if (scriptEngine == null) {
-            scriptEngine = scriptEngineManager.getEngineByName(engineName);
+        if ((scriptEngine = scriptEngineManager.getEngineByName(engineName)) == null) {
+            RegisteredServiceProvider<ScriptEngineManager> provider = Bukkit.getServer().getServicesManager().getRegistration(ScriptEngineManager.class);
+            if (provider != null && provider.getProvider() != null) {
+                scriptEngine = provider.getProvider().getEngineByName("nashorn");
+            }
         }
     }
 
