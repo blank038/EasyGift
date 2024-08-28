@@ -6,7 +6,7 @@ depend:
   - NBTAPI
 softdepend:
   - NashornJs
-version: ${version}
+version: ${project.version}
 api-version: 1.13
 commands:
   easygift:
