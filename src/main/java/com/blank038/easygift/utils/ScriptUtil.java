@@ -3,7 +3,9 @@ package com.blank038.easygift.utils;
 import com.blank038.easygift.EasyGift;
 import de.tr7zw.nbtapi.utils.MinecraftVersion;
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
@@ -23,11 +25,16 @@ public class ScriptUtil {
             try {
                 ScriptEngineFactory factory = (ScriptEngineFactory) Class.forName("org.openjdk.nashorn.api.scripting.NashornScriptEngineFactory").newInstance();
                 scriptEngineManager.registerEngineName("nashorn", factory);
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-                EasyGift.getInstance().getLogger().warning("not found the Nashorn ScriptEngine");
+            } catch (Exception e) {
+                RegisteredServiceProvider<ScriptEngineManager> provider = Bukkit.getServer().getServicesManager().getRegistration(ScriptEngineManager.class);
+                if (provider != null && provider.getProvider() != null) {
+                    scriptEngine = provider.getProvider().getEngineByName("nashorn");
+                }
             }
         }
-        scriptEngine = scriptEngineManager.getEngineByName(engineName);
+        if (scriptEngine == null) {
+            scriptEngine = scriptEngineManager.getEngineByName(engineName);
+        }
     }
 
     public static boolean detectionCondition(Player player, List<String> conditions) {

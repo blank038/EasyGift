@@ -4,6 +4,8 @@ depend:
   - AyCore
   - PlaceholderAPI
   - NBTAPI
+softdepend:
+  - NashornJs
 version: ${version}
 api-version: 1.13
 commands:
