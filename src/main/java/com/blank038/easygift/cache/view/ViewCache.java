@@ -34,8 +34,13 @@ public class ViewCache {
                 ConfigurationSection is = itemSection.getConfigurationSection(k);
                 ItemStack itemStack = new ItemStack(Material.valueOf(is.getString("type")));
                 itemStack.setAmount(is.getInt("amount"));
-                itemStack.setDurability((short) is.getInt("data"));
+                if (is.contains("data")) {
+                    itemStack.setDurability((short) is.getInt("data"));
+                }
                 ItemMeta itemMeta = itemStack.getItemMeta();
+                if (is.contains("custom-model-data")) {
+                    itemMeta.setCustomModelData(is.getInt("custom-model-data"));
+                }
                 itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', is.getString("name")));
                 List<String> lore = new ArrayList<>(is.getStringList("lore"));
                 lore.replaceAll((s) -> ChatColor.translateAlternateColorCodes('&', s));
