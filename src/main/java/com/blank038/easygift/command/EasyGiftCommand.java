@@ -114,11 +114,15 @@ public class EasyGiftCommand implements CommandExecutor {
             sender.sendMessage(EasyGift.getString("message.player-offline", true));
             return;
         }
-        if (!CacheHandler.VIEW_CACHE_MAP.containsKey(args[2])) {
+        PropItemCache propItem = CacheHandler.PROP_ITEM_CACHE_MAP.get(args[2]);
+        if (!CacheHandler.PROP_ITEM_CACHE_MAP.containsKey(args[2])) {
+            sender.sendMessage(EasyGift.getString("message.wrong-prop-id", true));
+            return;
+        }
+        if (!CacheHandler.VIEW_CACHE_MAP.containsKey(propItem.getViewId())) {
             sender.sendMessage(EasyGift.getString("message.view-not-exists", true));
             return;
         }
-        PropItemCache propItem = CacheHandler.PROP_ITEM_CACHE_MAP.get(args[2]);
         ViewCache viewCache = CacheHandler.VIEW_CACHE_MAP.get(propItem.getViewId());
         new GiftView(propItem, viewCache, propItem.getViewParams())
                 .setConsume(false)
